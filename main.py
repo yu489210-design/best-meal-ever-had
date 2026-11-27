@@ -21,6 +21,9 @@ def main():
     # reads the file exactly as submitted.
     with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8", newline="") as f:
         f.write(ENTRY)
+    # Read back and verify: the file on disk must be exactly ENTRY.
+    with open(os.path.join(out_dir, "entry.txt"), "r", encoding="utf-8", newline="") as f:
+        assert f.read() == ENTRY, "entry.txt read-back mismatch"
 
 if __name__ == "__main__":
     main()
